@@ -5,8 +5,10 @@ import Spinner from './Spinner';
 import './index.css';
 
 class App extends React.Component {
+  // initialize app state 
   state = { lat: null,  errorMessage: '' };
 
+  // handle callbacks / set state after component intially mounts/renders
   componentDidMount() {
     window.navigator.geolocation.getCurrentPosition(
       position => this.setState({ lat: position.coords.latitude }),
@@ -14,6 +16,7 @@ class App extends React.Component {
     );
   }
 
+  // helper method to seperate logic from render method
   renderContent() {
     if (this.state.errorMessage && !this.state.lat) {
       return <div>Error: {this.state.errorMessage}</div>
